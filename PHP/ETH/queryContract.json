@@ -1,0 +1,11 @@
+
+ {
+    "network": "ETH",
+    "subnetwork": "4",
+    "query": 
+    {
+        "rpc_method": "eth_call",
+         "rpc_params":[{"from": "0x2a14D313F58bA0bd4e8Fa282082D11DA24b1DaA3", "to": "0xc63b376d9E2eCFC9019c700E9d7dD486E3D28e97", "data": "0x186c2e5f"}, "latest"]
+    },
+    "decoder":{}
+}
