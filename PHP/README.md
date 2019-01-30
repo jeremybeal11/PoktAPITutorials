@@ -1,8 +1,4 @@
----
-title: "Connect dApp via PHP"
-excerpt: ""
----
-[block:api-header]
+
 {
   "title": "Overview"
 }
