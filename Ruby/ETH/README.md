@@ -16,12 +16,15 @@ Pocket has 3 URL domains that you can point your dApp to in order to interact wi
     *   https://ethereum.pokt.network/transactions
 * Query
     *   https://ethereum.pokt.network/queries
+
 ## Get Health [GET]
 To get the Pocket node health status and see the plugins and network connected to the node, enter: 
 ```ruby
+ MainURL = "https://ethereum.pokt.network"
+
 def getHealth()
 
-        url = "https://ethereum.pokt.network/health"
+        url = MainURL + "/health"
         data =RestClient.get(url)
         puts data
         
@@ -47,9 +50,11 @@ See below for an example of seeing the JSON format, and sending an ETH transacti
 ```
 Example:
 ```ruby
+MainURL = "https://ethereum.pokt.network"
+
 def sendTX()
 
-            url = "https://ethereum.pokt.network/transactions"
+            url = MainURL + "/transactions"
             
             request = {"network": "ETH","subnetwork": "4","serialized_tx": "0x0","tx_metadata":{}}.to_json
     
@@ -79,10 +84,11 @@ You can query a transaction on the network by using RPC Methods and parameters f
 ```
 Example:   
 ```ruby
+MainURL = "https://ethereum.pokt.network"
+
 def queryTX()
-    
             
-            url = "https://ethereum.pokt.network/queries"   
+            url = MainURL + "/queries"   
         
             request = {"network": "ETH","subnetwork": "4","query":{"rpc_method": "eth_getBalance","rpc_params":["0x0","latest"]},"decoder": Decoder}.to_json
         
@@ -120,15 +126,10 @@ Datatx = {
         "to": "0x0", #contract address
         "data": "0x186c2e5f" #methodID
     }
-def QueryContract()
-
-        url = "https://ethereum.pokt.network/queries"
-
-        request = {"network": "ETH","subnetwork": "4","query":{"rpc_method": "eth_call","rpc_params": [ Datatx, "latest" ]}, "decoder": {}}.to_json
-        
-        send = RestClient.post(url,request, :content_type => 'application/json')
-
-        puts send
-    
-    end    
 ```
+Once the params have been specified, just insert DataTX in the **RPC_Params** in the QueryTx method(See below for example). 
+```Ruby
+   request = {"network": "ETH","subnetwork": "4","query":{"rpc_method": "eth_call","rpc_params": [ Datatx, "latest" ]}, "decoder": {}}.to_json
+        
+```
+
