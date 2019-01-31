@@ -5,10 +5,10 @@ There are several tutorials available on how to connect your application to the 
 
 The tutorials available comes is available in an assortment of languages and framworks for Ethereum and Aion which are:
 
-*   PHP
-*   NodeJS
-*   Python
-*   Ruby
+*   [PHP](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/PHP/ETH)
+*   [NodeJS](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/NodeJS/ETH)
+*   [Python](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Python/ETH)
+*   [Ruby](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Ruby/ETH)
 *   Android(no SDK)
 *   iOS(no SDK)
 
