@@ -58,8 +58,6 @@ Example:
         ethVal = requests.post(url= url, headers = headers, json= txReturn)
 
         #print(ethVal.json())
-        #print ethVal.status_code, ethVal.reason
-        #print(txReturn)
 
     txQuery()
  ```
