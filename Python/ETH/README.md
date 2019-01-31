@@ -18,11 +18,13 @@ While we check for the Nodes health we are going to make sure your Requests libr
 ## Sending Transactions [POST]
 Most networks accept signed transactions coded as hex strings, and these should be the input of the **serialized_tx** field. The **tx_metadata** is for networks that required different data structures to represent a transaction. To send a transaction, we will need to send the data VIA JSON.
 ```python
+PoktURL = "https://ethereum.pokt.network"
+
 def sendTransaction():
 
-
-        poktnode = {"network":"ETH","subnetwork":"4","serialized_tx":"0x0","tx_metadata":{}}
-        response = requests.post("https://ethereum.pokt.network/transactions", data= poktnode)
+        Ser_Tx = "0x0"
+        poktnode = {"network":"ETH","subnetwork":"4","serialized_tx":str(Ser_Tx),"tx_metadata":{}}
+        response = requests.post(PoktURL + "/transactions", data= poktnode)
         
         print(response.text)
     sendTransaction()
@@ -47,11 +49,15 @@ See below for an example of seeing the JSON format, and sending an ETH transacti
 ```
 Example:
 ```python
+PoktURL = "https://ethereum.pokt.network"
+
  def txQuery():
+ 
+        address = "0x1aef7f3a9b54db7f6d844c4a73eac7a701d851a1"
 
-        url = "https://ethereum.pokt.network/queries"
+        url = PoktURL + "/queries"
 
-        txReturn = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_getTransactionCount", "rpc_params":["0x0","latest"]},"decoder":{}}
+        txReturn = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_getTransactionCount", "rpc_params":[str(address),"latest"]},"decoder":{}}
         
         headers = {"content-type": "application/json"}
 
@@ -84,22 +90,13 @@ To retrieve data from a smart contract, you will have to create the raw data to 
 *   value
 
 ```python
-def contractQuery():
-
-        url = "https://ethereum.pokt.network/queries"
-
         contractParams = {
 
             "to": "0xc63b376d9e2ecfc9019c700e9d7dd486e3d28e97",
+            "from": "0x0"
             "data": "0x186c2e5f"
         }
 
         contractReturn = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_call", "rpc_params":[contractParams,"latest"]},"decoder":{}}
-        
-        getData = requests.post(url= url, json= contractReturn)
-
-
-        #print(getData.json())
-        
-    contractQuery()    
-    ```
+  
+```
