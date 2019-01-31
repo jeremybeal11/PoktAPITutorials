@@ -49,11 +49,13 @@ Now we can create our Read and Write methods
 ## Sending Transactions or Smart Contact Data [POST]
  To send a transaction, we will need to send the data VIA JSON.
 ```Java
+ String poktURL = "https://ethereum.pokt.network";
+
  String sendTxdata(JSONObject json) throws IOException {
 
          RequestBody body = RequestBody.create(JSON, String.valueOf(json));
          Request request = new Request.Builder()
-                 .url("https://ethereum.pokt.network/transactions")
+                 .url(poktURL +"/transactions")
                  .post(body)
                  .build();
          try (Response response = httpClient.newCall(request).execute()) {
@@ -63,11 +65,13 @@ Now we can create our Read and Write methods
 ```
 ## Query a Transaction or Smart Contract Data [POST]
 ```Java
+ String poktURL = "https://ethereum.pokt.network";
+
  String queryTxdata(JSONObject json) throws IOException {
 
         RequestBody body = RequestBody.create(JSON, String.valueOf(json));
         Request request = new Request.Builder()
-                .url("https://ethereum.pokt.network/queries")
+                .url(poktURL+"/queries")
                 .post(body)
                 .build();
         try (Response response = httpClient.newCall(request).execute()) {
