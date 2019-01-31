@@ -68,7 +68,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void QueryTX() throws IOException, JSONException {
 
-        String TXJson = "{\"network\":\"ETH\",\"subnetwork\":\"4\",\"query\":{\"rpc_method\":\"eth_getBalance\",\"rpc_params\":[\"0x1aEF7f3A9B54db7F6D844c4A73Eac7A701d851A1\",\"latest\"]},\"decoder\":{}}";
+        String TXJson = "{\"network\":\"ETH\",\"subnetwork\":\"4\",\"query\":{\"rpc_method\":\"eth_getBalance\",\"rpc_params\":[\"0x0\",\"latest\"]},\"decoder\":{}}";
 
         JSONObject jsonString = new JSONObject(TXJson);
 
