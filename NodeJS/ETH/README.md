@@ -87,6 +87,8 @@ You can query a transaction on the network by using RPC Methods and parameters f
 ```
 Example: 
 ```Javascript
+PoktURL = "https://ethereum.pokt.network"
+
 // if you wish to have the hex address as a parameter, you may have to use the web3 library to convert
 // hex>ascii>string
 
