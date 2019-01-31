@@ -13,7 +13,7 @@ While we check for the Nodes health we are going to make sure your Requests libr
       >>> import requests # Get server health
       >>> response = requests.get("https://ethereum.pokt.network/health") #to recieve response number
       >>> print(response) #to recive node JSON resonse
-      >>> print(response.json())"
+      >>> print(response.json())
 ``` 
 ## Sending Transactions [POST]
 Most networks accept signed transactions coded as hex strings, and these should be the input of the **serialized_tx** field. The **tx_metadata** is for networks that required different data structures to represent a transaction. To send a transaction, we will need to send the data VIA JSON.
