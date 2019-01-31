@@ -49,26 +49,28 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void sendTX() throws IOException, JSONException {
+     
+        String txID = "0x0";
 
         JSONObject sendToken = new JSONObject();
 
         sendToken.put("network","ETH");
         sendToken.put("subnetwork","4");
-        sendToken.put("serialized_tx","0x0");
+        sendToken.put("serialized_tx",""+ txID +"");
         sendToken.put("tx_metadata", null);
 
         String go = connect.sendTxdata(sendToken);
 
         System.out.println(go);
 
-        //Log.d("from Test", go);
-
     }
 
     @Test
     public void QueryTX() throws IOException, JSONException {
 
-        String TXJson = "{\"network\":\"ETH\",\"subnetwork\":\"4\",\"query\":{\"rpc_method\":\"eth_getBalance\",\"rpc_params\":[\"0x0\",\"latest\"]},\"decoder\":{}}";
+        String address  = "0x2a14D313F58bA0bd4e8Fa282082D11DA24b1DaA3";
+
+        String TXJson = "{\"network\":\"ETH\",\"subnetwork\":\"4\",\"query\":{\"rpc_method\":\"eth_getBalance\",\"rpc_params\":[\""+address+"\",\"latest\"]},\"decoder\":{}}";
 
         JSONObject jsonString = new JSONObject(TXJson);
 
