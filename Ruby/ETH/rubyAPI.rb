@@ -4,9 +4,11 @@ require 'rest-client'
 
 class ApiConnect 
 
+    MainURL = "https://ethereum.pokt.network"
+
     def getHealth()
 
-        url = "https://ethereum.pokt.network/health"
+        url = MainURL + "/health"
 
         data =RestClient.get(url)
 
@@ -14,9 +16,8 @@ class ApiConnect
     end
 
     def queryTX()
-    
             
-            url = "https://ethereum.pokt.network/queries"   
+            url = MainURL + "/queries"   
         
             request = {"network": "ETH","subnetwork": "4","query":{"rpc_method": "eth_getBalance","rpc_params":["0x2a14D313F58bA0bd4e8Fa282082D11DA24b1DaA3","latest"]},"decoder": Decoder}.to_json
         
@@ -27,8 +28,7 @@ class ApiConnect
 
     def sendTX()
 
-            url = "https://ethereum.pokt.network/transactions"
-
+            url =  MainURL + "/transactions"
             
             request = {"network": "ETH","subnetwork": "4","serialized_tx": "0x0","tx_metadata":{}}.to_json
             
@@ -39,24 +39,6 @@ class ApiConnect
 
     end 
 
-
-    
-    def sendContractTX()
-
-        url = "https://ethereum.pokt.network/transactions"
-
-            
-        request = {"network": "ETH","subnetwork": "4",
-            "serialized_tx": "0x0",
-            "tx_metadata":{}}.to_json
-            
-        send = RestClient.post(url,request, :content_type => 'application/json')
-        
-
-           # puts send        
-    
-    end
-
     Datatx = { 
         "from": "0x2a14d313f58ba0bd4e8fa282082d11da24b1daa3",
         "to": "0xc63b376d9e2ecfc9019c700e9d7dd486e3d28e97",
@@ -64,24 +46,6 @@ class ApiConnect
         
     }
 
-    Decoder = ["returnTypes": ["address", "uint256", "string", "string", "bytes32", "string", "uint256", "string", "bool", "uint256", "uint256"]]
 
-    # when i specify the "FROM" it still returns the data first data it recieved 
 
-    def QueryContract()
-
-        url = "https://ethereum.pokt.network/queries"
-
-        request = {"network": "ETH","subnetwork": "4","query":{"rpc_method": "eth_call","rpc_params": [ Datatx, "latest" ]}, "decoder": {}}.to_json
-        
-        
-        send = RestClient.post(url,request, :content_type => 'application/json')
-
-        puts send
-        
-
-    end    
-    
-end
-
-ApiConnect.new.QueryContract()
+ApiConnect.new.getHealth()
