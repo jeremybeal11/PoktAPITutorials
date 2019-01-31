@@ -2,8 +2,8 @@
 ## Overview
 If you wish to connect your Android dApp to the Pocket Network without using the Pocket Plugin, see our tutorial below. For more information on RPC calls, see the [JSON-RPC](https://github.com/ethereum/wiki/wiki/JSON-RPC) list for other calls you can use to interact on the Ethereum network.
 ## Prerequisites
-*   Okhttp3
-*   Jitpack
+*   [Okhttp3](https://github.com/square/okhttp)
+*   [Jitpack](https://www.jitpack.io)
 ## Setup
 In your project gradle file insert jitpack
 ```
