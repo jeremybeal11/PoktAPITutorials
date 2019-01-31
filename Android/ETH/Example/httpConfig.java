@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class httpConnection {
 
-    String poktURL = "https://ethereum.pokt.network/health";
+     String poktURL = "https://ethereum.pokt.network";
 
      OkHttpClient httpClient = new OkHttpClient();
 
@@ -22,7 +22,7 @@ public class httpConnection {
      String getHttpResponse() throws IOException {
 
         Request request = new Request.Builder()
-                .url(poktURL)
+                .url(poktURL + "/health")
                 .build();
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -41,7 +41,7 @@ public class httpConnection {
 
          RequestBody body = RequestBody.create(JSON, String.valueOf(json));
          Request request = new Request.Builder()
-                 .url("https://ethereum.pokt.network/transactions")
+                 .url(poktURL+"/transactions")
                  .post(body)
                  .build();
          try (Response response = httpClient.newCall(request).execute()) {
@@ -54,18 +54,7 @@ public class httpConnection {
 
         RequestBody body = RequestBody.create(JSON, String.valueOf(json));
         Request request = new Request.Builder()
-                .url("https://ethereum.pokt.network/queries")
-                .post(body)
-                .build();
-        try (Response response = httpClient.newCall(request).execute()) {
-            return response.body().string();
-        }
-    }
-
-    String querySC(JSONObject json) throws  IOException {
-        RequestBody body = RequestBody.create(JSON, String.valueOf(json));
-        Request request = new Request.Builder()
-                .url("https://ethereum.pokt.network/queries")
+                .url(poktURL + "/queries")
                 .post(body)
                 .build();
         try (Response response = httpClient.newCall(request).execute()) {
