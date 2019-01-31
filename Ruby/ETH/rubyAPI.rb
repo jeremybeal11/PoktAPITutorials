@@ -46,6 +46,6 @@ class ApiConnect
         
     }
 
-
+end
 
 ApiConnect.new.getHealth()
