@@ -9,7 +9,7 @@ The tutorials available comes is available in an assortment of languages and fra
 *   [NodeJS](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/NodeJS/ETH)
 *   [Python](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Python/ETH)
 *   [Ruby](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Ruby/ETH)
-*   Android(no SDK)
+*   [Android(w/o SDK)](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Android/ETH)
 *   iOS(no SDK)
 
 To learn more about Pocket, click here to view the website, or GitHub. 
