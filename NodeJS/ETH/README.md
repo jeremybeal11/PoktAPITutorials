@@ -23,10 +23,15 @@ var request = require("request")
 # Get Health [GET]
 To get the Pocket node health status and see the plugins and network connected to the node, enter: 
 ```Javascript
-var health = request.get("https://ethereum.pokt.network/health", function(err, res, body) {  
-    let json = JSON.parse(body);
-    console.log(json);
-});
+PoktURL = "https://ethereum.pokt.network"
+
+function getHealth() {
+
+    var health = request.get(PoktURL+"/health", function(err, res, body) {  
+        let json = JSON.parse(body);
+        console.log(json);
+    });
+}
 ```
 # Send a Transaction [POST]
 To send a transaction on one blockchains Pocket supports, you will need to specify following in a JSON format:
@@ -46,16 +51,21 @@ See below for an example of seeing the JSON format, and sending an ETH transacti
 ```
 Example:
 ```Javascript
-var sendTx = {
-    url: "https://ethereum.pokt.network/transactions",
-    form: 
-        {"network":"ETH","subnetwork":"4","serialized_tx":"0x0","tx_metadata":{}}
-}
+PoktURL = "https://ethereum.pokt.network"
 
-var pktSend = request.post(sendTx, function(err, res, body) {  
-    let json = JSON.parse(body);
-    console.log(json);
-});
+function sendTX(){
+    
+    var sendTx = {
+        url: PoktURL + "/transactions",
+        form: 
+            {"network":"ETH","subnetwork":"4","serialized_tx":"0x0","tx_metadata":{}}
+    }
+    
+    var pktSend = request.post(sendTx, function(err, res, body) {  
+        let json = JSON.parse(body);
+        console.log(json);
+    });
+}
 ```
 #   Query a Transaction [POST]
 You can query a transaction on the network by using RPC Methods and parameters for getting the balance, and other information surrounding it. To execute this query, you will need to define:
@@ -77,20 +87,25 @@ You can query a transaction on the network by using RPC Methods and parameters f
 ```
 Example: 
 ```Javascript
-var txCode = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_getTransactionCount", "rpc_params":["<Address>", "latest"]},"decoder":{}}
-       
+// if you wish to have the hex address as a parameter, you may have to use the web3 library to convert
+// hex>ascii>string
+
+function queryTX(){
+    var txCode = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_getTransactionCount", "rpc_params":["0x0", "latest"]},"decoder":{}}
+   
 var quertTx = {
-    url: "https://ethereum.pokt.network/queries",
+    url: PoktURL + "/queries",
     headers: {"Content-Type": "application/json"},
     form: txCode   
 }
     
 var pktQuerytx = request.post(quertTx, function(err, res,body) {  
     let json = JSON.parse(body);
-    console.log(body);
 
+    console.log(json);
 
 }); 
+}
 ```
 # Send Data to Contract [POST]
 
@@ -121,16 +136,6 @@ var dataTx = {
         "data": "0x186c2e5f"
 }
 
-var contractCode = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_call", "rpc_params":[ dataTx, "latest"]},"decoder":{}}
-
-var conquertTx = {
-    url: "https://ethereum.pokt.network/queries",
-    headers: {"Content-Type": "application/json"},
-    form: contractCode   
-}
-
-var pktcontractSend = request.post(conquertTx, function(err, res, body) {  
-    let json = JSON.parse(body);
-    console.log(json);
-});
+// simply insert dataTX into txCode for the RPC_Params as if you were looking up a transaction.
+var txCode = {"network": "ETH","subnetwork": "4","query": {"rpc_method": "eth_call", "rpc_params":[ dataTx, "latest"]},"decoder":{}}
 ```
