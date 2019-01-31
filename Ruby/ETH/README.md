@@ -109,7 +109,7 @@ Similar to sending a Ethereum transaction(as shown above), to send data to a sma
 
 Once you defined your transaction params and signed it. Send it the same way you will send a Ethereum transaction (As shown earlier).
 ## Query Contract Data [POST]
-To retrieve data from a smart contract, you will have to create the raw data to send to the Pocket node as well as a decoder. The mandatory elements your transaction must have is:
+To retrieve data from a smart contract, you will have to create the raw data to send to the Pocket node. The mandatory elements your transaction must have is:
 *   To (address of the contact)
 *   Data (the method ID you are trying to call)
 
