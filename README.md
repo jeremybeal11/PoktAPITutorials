@@ -12,4 +12,4 @@ The tutorials available comes is available in an assortment of languages and fra
 *   [Android(w/o SDK)](https://github.com/jeremybeal11/PoktAPITutorial/tree/master/Android/ETH)
 *   iOS(no SDK)
 
-To learn more about Pocket, click here to view the website, or GitHub. 
+To learn more about Pocket, click here to view the [website](https://pokt.network), or [GitHub.](https://github.com/pokt-network) 
